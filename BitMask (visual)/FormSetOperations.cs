@@ -2,9 +2,9 @@ using Practice;
 
 namespace BitMask_Visual;
 
-public partial class Form1 : Form
+public partial class FormSetOperations : Form
 {
-    public Form1()
+    public FormSetOperations()
     {
         InitializeComponent();
         ListSets.Enter += ListSets_Enter;
@@ -46,6 +46,7 @@ public partial class Form1 : Form
                 "Подсказка: двойной клик по множеству покажет его содержимое",
                 ""}
         };
+
         Buttons = new Button[] {
             Union, 
             Intersection, 
@@ -53,6 +54,7 @@ public partial class Form1 : Form
             SymmetricalDifference, 
             Negation,
             Bulean };
+
         foreach (Button button in Buttons)
         {
             button.Click += OperationButton_Click;

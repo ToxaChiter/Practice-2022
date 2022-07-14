@@ -42,7 +42,7 @@ public class BitMask
     /// </summary>
     /// <param name="set">Исходное множество</param>
     /// <param name="path">Путь для записи в файл</param>
-    public static void ShowBulean(int[] set, string path = @"../../../Universum.txt")
+    public static void ShowBulean(int[] set, string path)
     {
         int n = 0;
         Counter = 0;

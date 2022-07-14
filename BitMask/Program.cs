@@ -53,6 +53,3 @@ Console.WriteLine($"Negation (B):\t{string.Join(", ", C)}\n");
 
 
 Console.Clear();
-
-
-Transposition.Write(new int[] { 1, 2, 3, 4 }, Transposition.Orders.Anti);

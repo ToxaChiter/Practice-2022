@@ -2,7 +2,7 @@
 
 namespace BitMask_Visual
 {
-    partial class Form1
+    partial class FormSetOperations
     {
         /// <summary>
         ///  Required designer variable.

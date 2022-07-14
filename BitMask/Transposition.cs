@@ -2,12 +2,16 @@
 /// <summary>
 /// Класс, реализующий вывод всех перестановок заданного множества
 /// </summary>
-internal static class Transposition
+public static class Transposition
 {   
     /// <summary>
     /// Счётчик
     /// </summary>
     private static int Counter;
+    /// <summary>
+    /// Средство записи в файл
+    /// </summary>
+    private static StreamWriter Writer;
     /// <summary>
     /// Перечисление порядков
     /// </summary>
@@ -21,12 +25,14 @@ internal static class Transposition
     /// </summary>
     /// <param name="set">Исходное множество</param>
     /// <param name="order">Порядок перестановок</param>
-    public static void Write(int[] set, Orders order)
+    /// <param name="path">Путь для сохранения</param>
+    public static void Write(int[] set, Orders order, string path)
     {
         List<int> list = new HashSet<int>(set).ToList();
         list.Sort();
 
         Counter = 0;
+        Writer = new(path);
 
         switch (order)
         {
@@ -39,6 +45,9 @@ internal static class Transposition
                 CreateAnti(ref list, "");
                 break;
         }
+
+        Writer.Close();
+        Writer.Dispose();
     }
     /// <summary>
     /// Выводит в лексиографическом порядке
@@ -49,7 +58,7 @@ internal static class Transposition
     {
         if (list.Count == 1)
         {
-            Console.WriteLine($"{++Counter}.\t{s}, {list[0]}");
+            Writer.WriteLine($"{++Counter}.\t{s}, {list[0]}");
             return;
         }
 
@@ -69,13 +78,13 @@ internal static class Transposition
     /// <summary>
     /// Выводит в антилексиографическом порядке
     /// </summary>
-    /// <param name="list">Ссылка на отсортированное множество</param>
+    /// <param name="list">Ссылка на отсортированное в обратном порядке множество</param>
     /// <param name="s">Конструируемая строка</param>
     private static void CreateAnti(ref List<int> list, string s)
     {
         if (list.Count == 1)
         {
-            Console.WriteLine($"{++Counter}.\t{list[0]}, {s}");
+            Writer.WriteLine($"{++Counter}.\t{list[0]}, {s}");
             return;
         }
 
