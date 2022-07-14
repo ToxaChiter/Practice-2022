@@ -19,7 +19,7 @@ public class BitMask
     /// <summary>
     /// Универсум множеств
     /// </summary>
-    private List<int> Universum { get; }
+    public List<int> Universum { get; }
 
     /// <summary>
     /// Мощность универсума

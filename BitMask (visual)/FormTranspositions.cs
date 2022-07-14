@@ -38,9 +38,11 @@ public partial class FormTranspositions : Form
             {
                 string[] chars = TextBoxAmount.Text.Trim().Split(' ');
                 HashSet<int> numbers = new();
+                int temp;
                 foreach (var item in chars)
                 {
-                    numbers.Add(int.Parse(item));
+                    temp = int.Parse(item);
+                    if (temp > 0) numbers.Add(temp);
                 }
                 set = numbers.ToArray();
                 Array.Sort(set);

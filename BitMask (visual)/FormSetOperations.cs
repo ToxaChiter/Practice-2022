@@ -38,7 +38,7 @@ public partial class FormSetOperations : Form
 
             new string[]{
                 "Выберите множество для операции \"Дополнение\"\r\n" +
-                "Подсказка: двойной клик по множеству покажет его содержимое", 
+                "Подсказка: двойной клик по множеству покажет его содержимое",
                 ""},
 
             new string[]{
@@ -48,10 +48,10 @@ public partial class FormSetOperations : Form
         };
 
         Buttons = new Button[] {
-            Union, 
-            Intersection, 
-            Difference, 
-            SymmetricalDifference, 
+            Union,
+            Intersection,
+            Difference,
+            SymmetricalDifference,
             Negation,
             Bulean };
 
@@ -133,7 +133,7 @@ public partial class FormSetOperations : Form
         if (e.KeyChar == ((char)Keys.Enter))
         {
             bool canParse = true;
-            foreach (var item in TextBoxAmount.Text.Trim().Split(' ')) 
+            foreach (var item in TextBoxAmount.Text.Trim().Split(' '))
             { canParse = canParse && int.TryParse(item, out int value); }
 
             if (TextBoxAmount.Text.Trim() == string.Empty) canParse = true;
@@ -144,9 +144,11 @@ public partial class FormSetOperations : Form
                 {
                     string[] chars = TextBoxAmount.Text.Trim().Split(' ');
                     HashSet<int> numbers = new();
+                    int temp;
                     foreach (var item in chars)
                     {
-                        numbers.Add(int.Parse(item));
+                        temp = int.Parse(item);
+                        if (temp > 0 && MainBitMask.Universum.Contains(temp)) numbers.Add(temp);
                     }
                     int[] set = numbers.ToArray();
                     Array.Sort(set);
@@ -237,9 +239,9 @@ public partial class FormSetOperations : Form
                     tempSet = null;
 
                     string message;
-                    if (Sets[(string)ListSets.Items[^1]].Length == 0) 
+                    if (Sets[(string)ListSets.Items[^1]].Length == 0)
                         message = $"Добавленное множество: пустое";
-                    else message = 
+                    else message =
                             $"Добавленное множество: {string.Join(", ", Sets[(string)ListSets.Items[^1]])}";
                     MessageBox.Show(
                         message,
