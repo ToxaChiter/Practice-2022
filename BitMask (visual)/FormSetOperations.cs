@@ -96,6 +96,20 @@ public partial class FormSetOperations : Form
         {
             if (int.TryParse(TextBoxAmount.Text, out int value))
             {
+                if (value < 0)
+                {
+                    TextBoxAmount.Clear();
+                    MessageBox.Show(
+                        "Множество не может содержать менее 0 элементов! Попробуйте снова",
+                        "Ошибка!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                    return;
+                }
+
+
                 VisibleAll(true);
                 Choice.Enabled = false;
                 ListSets.Enabled = false;
